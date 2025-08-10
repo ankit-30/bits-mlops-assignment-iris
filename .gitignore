@@ -1,0 +1,82 @@
+# Iris MLOps Pipeline
+
+## Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+## Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+## Virtual Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+## IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+## MLflow (keep structure, ignore runs)
+mlruns/*/
+mlartifacts/
+.mlruns
+
+## Logs (keep structure, ignore content)
+logs/*.log
+logs/*.db
+logs/api.log
+logs/predictions.db
+
+## Testing
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+htmlcov/
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Jupyter Notebooks
+.ipynb_checkpoints
+
+## Environment variables
+.env.local
+.env.*.local
+
+## Temporary files
+*.tmp
+*.temp
+
+## Assignment files (not for production)
+ASSIGNMENT_*.md
+FINAL_*.md
+QUICK_*.md
