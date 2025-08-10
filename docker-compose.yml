@@ -1,35 +1,61 @@
 version: "3.8"
 
 services:
+  # Main ML API Service
   iris-api:
     build: .
+    container_name: iris-mlops-api
     ports:
       - "8000:8000"
     volumes:
       - ./logs:/app/logs
-      - ./models:/app/models
-      - ./data:/app/data
     environment:
       - PYTHONPATH=/app
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    depends_on:
+      - mlflow
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 40s
+    restart: unless-stopped
 
+  # MLflow Tracking Server
   mlflow:
     image: python:3.9-slim
+    container_name: iris-mlops-mlflow
     ports:
       - "5000:5000"
     volumes:
       - ./mlruns:/mlruns
     command: >
-      bash -c "pip install mlflow && 
-               mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri file:///mlruns"
+      bash -c "pip install mlflow &&
+               mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri file:///mlruns --default-artifact-root file:///mlruns"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5000"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 40s
+    restart: unless-stopped
+
+  # Prometheus Monitoring (Optional)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: iris-mlops-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.console.libraries=/etc/prometheus/console_libraries"
+      - "--web.console.templates=/etc/prometheus/consoles"
+    restart: unless-stopped
+
+networks:
+  default:
+    name: iris-mlops-network

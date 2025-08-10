@@ -1,0 +1,51 @@
+# Git files
+.git
+.gitignore
+
+# Python cache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environments
+.venv
+venv/
+env/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Documentation
+*.md
+!README.md
+
+# Notebooks (optional - keep for demo)
+# notebooks/
+
+# Test files
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs (will be created in container)
+logs/*.log
+
+# Batch files (not needed in container)
+*.bat
+
+# Docker files
+Dockerfile
+docker-compose.yml
+.dockerignore
