@@ -5,6 +5,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.so
+.pytest_cache/
+.coverage
+coverage.xml
+*.cover
+.hypothesis/
 
 ## Distribution / packaging
 .Python
