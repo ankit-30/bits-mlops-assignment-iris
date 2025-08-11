@@ -1,0 +1,33 @@
+stages:
+  data_load:
+    cmd: python src/data/data_loader.py
+    deps:
+    - src/data/data_loader.py
+    outs:
+    - data/iris_raw.csv
+    - data/X_train.npy
+    - data/X_test.npy
+    - data/y_train.npy
+    - data/y_test.npy
+    - data/scaler.pkl
+    
+  train:
+    cmd: python src/models/train.py
+    deps:
+    - src/models/train.py
+    - data/X_train.npy
+    - data/X_test.npy
+    - data/y_train.npy
+    - data/y_test.npy
+    - data/scaler.pkl
+    outs:
+    - models/best_model_model.pkl
+    metrics:
+    - mlruns/
+    
+  api_test:
+    cmd: python -m pytest tests/test_api.py -v
+    deps:
+    - tests/test_api.py
+    - src/api/
+    - models/best_model_model.pkl

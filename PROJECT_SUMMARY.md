@@ -81,10 +81,19 @@ Docker container packages the complete application:
 - Exposes API on port 8000
 - Image: `ankku18/iris-mlops:latest`
 
+### Data Version Control (DVC)
+Complete data and model versioning with DVC:
+- **Data Tracking**: Version control for datasets (`iris_raw.csv.dvc`)
+- **Model Tracking**: Version control for trained models (`best_model_model.pkl.dvc`)
+- **Pipeline Definition**: Automated ML workflow in `dvc.yaml`
+- **Reproducibility**: Consistent model training and data processing
+- **Demo Integration**: `dvc_demo.bat` for easy demonstration
+
 ### Monitoring and Logging
 - SQLite database stores prediction requests and responses
 - File-based logging for application events
 - Prometheus metrics for system monitoring
+- **Grafana Visual Dashboards**: Real-time monitoring with comprehensive MLOps dashboards
 - Health check endpoints for deployment monitoring
 
 ### CI/CD Pipeline (GitHub Actions)
@@ -134,24 +143,51 @@ iris-mlops/
 │   ├── models/       # Model training code
 │   └── monitoring/   # Logging utilities
 ├── tests/           # Unit tests
-├── data/            # Processed datasets
-├── models/          # Trained model artifacts
+├── data/            # Processed datasets (DVC tracked)
+├── models/          # Trained model artifacts (DVC tracked)
 ├── logs/            # Application logs
 ├── mlruns/          # MLflow experiment data
-├── demo.bat         # Complete pipeline demonstration
+├── grafana/         # Grafana dashboard configurations
+│   ├── dashboards/  # Dashboard JSON definitions
+│   └── datasources/ # Prometheus datasource config
+├── .dvc/            # DVC configuration and cache
+├── dvc.yaml         # DVC pipeline definition
+├── demo-with-dashboard.bat  # Complete stack demo
+├── demo.bat         # Basic pipeline demonstration
+├── dvc_demo.bat     # DVC integration demo
+├── docker-compose.yml  # Multi-service orchestration
 ├── requirements.txt # Python dependencies
 └── Dockerfile       # Container configuration
 ```
 
 ## How to Run
 
-### Complete Demonstration
+### Complete MLOps Demo with Dashboard
+```bash
+demo-with-dashboard.bat
+```
+This comprehensive demo launches the full MLOps stack including:
+- FastAPI at http://localhost:8000/docs
+- MLflow UI at http://localhost:5000
+- **Grafana Dashboard at http://localhost:3000** (admin/admin123)
+- Prometheus at http://localhost:9090
+
+### Quick API & MLflow Demo
 ```bash
 demo.bat
 ```
-This single command runs the entire pipeline and opens:
+This single command runs the basic pipeline and opens:
 - MLflow UI at http://localhost:5000
 - API documentation at http://localhost:8000/docs
+
+### DVC Integration Demo
+```bash
+dvc_demo.bat
+```
+Demonstrates data version control capabilities:
+- Data pipeline reproduction
+- Model versioning
+- Pipeline status and visualization
 
 ### Individual Components
 ```bash
@@ -201,6 +237,8 @@ Response:
 - **Docker**: Containerization platform
 - **GitHub Actions**: CI/CD pipeline automation
 - **Prometheus**: Metrics collection and monitoring
+- **Grafana**: Visual monitoring dashboards and observability
+- **DVC**: Data Version Control for data and model versioning
 - **SQLite**: Prediction logging database
 - **Git + GitHub**: Version control and repository management
 
@@ -211,9 +249,11 @@ Response:
 **MLOps Pipeline Components:**
 - **Data Processing**: Automated Iris dataset loading, train/test split, StandardScaler normalization
 - **Model Training**: Three algorithms (Logistic Regression, Random Forest, SVM) with MLflow tracking
+- **Data Version Control**: Complete DVC integration for data and model versioning
 - **Experiment Management**: Complete MLflow integration for model versioning and comparison
 - **Model Registry**: Automatic best model selection and pickle serialization
 - **API Deployment**: Production-ready FastAPI with `/predict`, `/health`, `/metrics` endpoints
+- **Visual Monitoring**: Grafana dashboards with Prometheus integration
 - **Containerization**: Multi-stage Docker builds with optimized images
 - **CI/CD Pipeline**: GitHub Actions with automated testing, linting, and Docker Hub deployment
 - **Monitoring Infrastructure**: SQLite prediction logging, Prometheus metrics, file-based logs
@@ -229,6 +269,12 @@ Response:
 - **Scalability**: Ready for horizontal scaling with load balancers and orchestration
 
 ### Advanced Monitoring Capabilities ✅
+
+**Visual Dashboard & Analytics:**
+- **Grafana Dashboards**: Real-time MLOps monitoring with professional visualizations
+- **Prometheus Integration**: Comprehensive metrics collection and time-series data
+- **Performance Visualization**: Request latency, throughput, and model performance charts
+- **System Health Monitoring**: API uptime, resource utilization, and error rate tracking
 
 **Data Quality & Drift Detection:**
 - Statistical drift detection comparing recent vs. baseline data distributions
@@ -247,9 +293,9 @@ Response:
 **Planned Advanced Features (Development Roadmap):**
 - **Automated Re-training**: Performance threshold triggers and scheduled model updates
 - **A/B Testing Framework**: Multi-model deployment with traffic splitting capabilities
-- **Advanced Analytics**: Grafana dashboards and real-time performance visualization
 - **Enhanced Security**: OAuth2 authentication, rate limiting, and input sanitization
 - **Batch Processing**: Bulk prediction APIs and asynchronous processing capabilities
+- **Cloud Deployment**: Kubernetes orchestration and cloud-native scaling
 
 ## Project Links & Resources
 
@@ -324,8 +370,10 @@ docker stop iris-mlops && docker rm iris-mlops
 **Local Development URLs:**
 - **MLflow Tracking UI:** [http://localhost:5000](http://localhost:5000)
 - **FastAPI Documentation:** [http://localhost:8000/docs](http://localhost:8000/docs)
+- **Grafana Dashboard:** [http://localhost:3000](http://localhost:3000) (admin/admin123)
+- **Prometheus Metrics:** [http://localhost:9090](http://localhost:9090)
 - **API Health Check:** [http://localhost:8000/health](http://localhost:8000/health)
-- **Prometheus Metrics:** [http://localhost:8000/metrics](http://localhost:8000/metrics)
+- **API Metrics Endpoint:** [http://localhost:8000/metrics](http://localhost:8000/metrics)
 
 **API Endpoints:**
 - `POST /predict` - Model prediction endpoint

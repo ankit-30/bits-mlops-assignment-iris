@@ -15,7 +15,31 @@ Complete production-ready machine learning operations pipeline for Iris flower c
 
 ## For Evaluators - Choose Your Demonstration Method
 
-### Interactive Notebook Demo
+### 🎯 Complete MLOps Stack with Visual Dashboard
+
+```bash
+# Launch full stack with Grafana monitoring dashboard:
+demo-with-dashboard.bat
+```
+
+**Includes:** FastAPI + MLflow + Prometheus + Grafana Dashboard  
+**Access URLs:**
+- API Docs: http://localhost:8000/docs
+- MLflow UI: http://localhost:5000  
+- **Grafana Dashboard: http://localhost:3000** (admin/admin123)
+- Prometheus: http://localhost:9090
+
+### 📊 Quick API & MLflow Demo
+
+```bash
+# One-click basic pipeline demonstration:
+demo.bat
+```
+
+**Includes:** FastAPI + MLflow tracking  
+Launch basic pipeline for quick evaluation.
+
+### 📓 Interactive Notebook Demo
 
 ```bash
 # Launch comprehensive demonstration with visualizations:
@@ -24,13 +48,9 @@ jupyter notebook demo_notebook.ipynb
 
 This notebook contains complete assignment documentation with Group 94 details, interactive visualizations and performance charts, step-by-step MLOps pipeline walkthrough. You can export to PDF for submission using: `jupyter nbconvert --to pdf demo_notebook.ipynb`
 
-### Quick Automated Testing
+### 🔧 Individual Component Testing
 
 ```bash
-# One-click complete pipeline demonstration:
-demo.bat
-
-# Individual component testing:
 run_pipeline.bat     # Local ML pipeline execution
 run_docker.bat       # Docker deployment demo
 ```
@@ -57,6 +77,7 @@ Use this approach for understanding individual components, debugging, or develop
 
 Our implementation includes the following components:
 
+- **Data Version Control**: DVC integration for data and model versioning
 - **Data Pipeline**: Automated Iris dataset processing with train/test splitting
 - **Model Training**: 3 ML algorithms (Logistic Regression, Random Forest, SVM)  
 - **Experiment Tracking**: Complete MLflow integration for model versioning
@@ -188,11 +209,39 @@ docker run -p 8000:8000 ankku18/iris-mlops:latest
 
 This option allows testing of the production environment.
 
+## Data Version Control with DVC
+
+Our project uses DVC for data and model versioning:
+
+### DVC Pipeline Commands
+
+```bash
+# Run complete DVC pipeline
+python -m dvc repro
+
+# Check pipeline status  
+python -m dvc status
+
+# View pipeline DAG
+python -m dvc dag
+
+# Demo DVC integration
+dvc_demo.bat
+```
+
+### DVC Structure
+- **Data Tracking**: `data/iris_raw.csv.dvc`, processed datasets
+- **Model Tracking**: `models/best_model_model.pkl.dvc`
+- **Pipeline**: `dvc.yaml` defines complete ML workflow
+- **Configuration**: See `DVC_SETUP.md` for detailed setup
+- **Demo Script**: `dvc_demo.bat` for easy demonstration
+
 ## Technologies & Tools
 
 | **Category** | **Technologies** |
 |--------------|-----------------|
 | **ML Frameworks** | scikit-learn, MLflow |
+| **Data Versioning** | DVC (Data Version Control) |
 | **API Framework** | FastAPI, Pydantic |
 | **Containerization** | Docker, docker-compose |
 | **Monitoring** | Prometheus, SQLite, Python logging |

@@ -1,25 +1,28 @@
 # DVC Configuration for Iris MLOps Pipeline
 
-# Add data files to DVC tracking
-# Uncomment the following lines if using DVC for data versioning:
+# Files to ignore in DVC tracking
+logs/
+mlruns/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.vscode/
+.env
+*.log
+node_modules/
+.DS_Store
+Thumbs.db
 
-# data/iris_raw.csv
-# data/*.npy
-# models/*.pkl
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
 
-# To initialize DVC:
-# dvc init
-# dvc add data/iris_raw.csv
-# dvc add models/best_model_model.pkl
-# git add data/iris_raw.csv.dvc models/best_model_model.pkl.dvc
-# git commit -m "Add data and model to DVC"
+# IDE files
+.idea/
+*.iml
 
-# To set up remote storage (example with AWS S3):
-# dvc remote add -d myremote s3://mybucket/dvcstore
-# dvc push
-
-# To track changes:
-# dvc add data/new_data.csv
-# git add data/new_data.csv.dvc
-# git commit -m "Update data"
-# dvc push
+# Large temporary model files (if any)
+# temp_models/
