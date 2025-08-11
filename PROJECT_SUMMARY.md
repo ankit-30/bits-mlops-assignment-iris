@@ -3,6 +3,11 @@
 ## Team Information
 **Course:** MLOps Implementation  
 **Assignment:** Build, Track, Package, Deploy and Monitor an ML Model using MLOps Best Practices
+**Video** https://wilpbitspilaniacin0-my.sharepoint.com/:v:/g/personal/2023ac05488_wilp_bits-pilani_ac_in/EfcVRCU9VWdJorQVNYNIORUBDF16MHVRC1QyaWUx2tMniQ?e=6mBLYO&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+
+**Repository:** [https://github.com/ankit-30/bits-mlops-assignment-iris](https://github.com/ankit-30/bits-mlops-assignment-iris)
+
+2. **Docker Hub Image**: [https://hub.docker.com/r/ankku18/iris-mlops](https://hub.docker.com/r/ankku18/iris-mlops)
 
 ### Team Members
 | Name                     | Student ID    |

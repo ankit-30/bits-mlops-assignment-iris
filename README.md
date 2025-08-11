@@ -1,6 +1,8 @@
 # Iris Classification MLOps Pipeline
 
 **BITS Pilani MLOps Assignment**  
+**Video** https://wilpbitspilaniacin0-my.sharepoint.com/:v:/g/personal/2023ac05488_wilp_bits-pilani_ac_in/EfcVRCU9VWdJorQVNYNIORUBDF16MHVRC1QyaWUx2tMniQ?e=6mBLYO&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+
 **Course:** MLOps Implementation  
 
 **Team Members:**
